@@ -57,23 +57,23 @@ jobs:
         sonar.projectKey: test_vikas
 
 
-- name: qualitygate
-  plan:
-    - get: code-analysis
-      passed:
-      - build-and-analyze
-      trigger: true
-    - task: check-sonarqube-quality-gate
-      config:
-        platform: linux
-        image_resource:
-          type: docker-image
-          source:
-            repository: cathive/concourse-sonarqube-qualitygate-task
-            tag: latest # Use one of the versioned tags for reproducible builds!
-        inputs:
-        - name: code-analysis
-        run:
-          path: /sonarqube-qualitygate-check
-          dir: code-analysis
+#- name: qualitygate
+#  plan:
+#    - get: code-analysis
+#      passed:
+#      - build-and-analyze
+#      trigger: true
+#    - task: check-sonarqube-quality-gate
+#      config:
+#        platform: linux
+#        image_resource:
+#          type: docker-image
+#          source:
+#            repository: cathive/concourse-sonarqube-qualitygate-task
+#            tag: latest # Use one of the versioned tags for reproducible builds!
+#        inputs:
+#        - name: code-analysis
+#        run:
+#          path: /sonarqube-qualitygate-check
+#          dir: code-analysis
 
