@@ -51,7 +51,7 @@ jobs:
   - put: code-analysis
     params:
       project_path: sonarqube-analysis-input
-      project_key: test_vikas
+      project_key: test
       sources: ["."]
       additional_properties:
         sonar.projectKey: test
