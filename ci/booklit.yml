@@ -48,7 +48,7 @@ jobs:
       run:
         path: /bin/sh
         args: ["sample-gradle/ci/build.sh"]
-#  - put: code-analysis
+  - put: code-analysis
 #    params:
 #      project_path: sonarqube-analysis-input
 #      project_key: test_vikas
