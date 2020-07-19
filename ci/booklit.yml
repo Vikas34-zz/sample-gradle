@@ -13,12 +13,12 @@ resources:
   source:
     uri: https://github.com/Vikas34/sample-gradle.git
 
-- name: code-analysis
-  type: sonar-runner
-  source:
-    host_url: https://devstack.vwgroup.com/sonar
-    login: 279670c8489a098a93306270f2c559b15424a52d
-    project_key: test_vikas
+#- name: code-analysis
+#  type: sonar-runner
+#  source:
+#    host_url: https://devstack.vwgroup.com/sonar
+#    login: 279670c8489a098a93306270f2c559b15424a52d
+#    project_key: test_vikas
 
 
 jobs:
@@ -48,7 +48,7 @@ jobs:
       run:
         path: /bin/sh
         args: ["sample-gradle/ci/build.sh"]
-  - put: code-analysis
+#  - put: code-analysis
 #    params:
 #      project_path: sonarqube-analysis-input
 #      project_key: test_vikas
