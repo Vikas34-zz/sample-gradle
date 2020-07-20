@@ -9,7 +9,7 @@ config:
   inputs:
     - name: sample-gradle
   params:
-    sonar_token: ((sonarqube_token))
+    sonar_token: ((limeo_sonarqube_key))
   outputs:
     - name: sonarqube-analysis-input
   run:
