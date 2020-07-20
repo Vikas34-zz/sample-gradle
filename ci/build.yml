@@ -1,17 +1,17 @@
 ---
-config:
-  platform: linux
-  image_resource:
-    type: docker-image
-    source:
-      repository: java
-      tag: 'openjdk-8'
-  inputs:
-    - name: sample-gradle
-  params:
-    sonar_token: ((limeo_sonarqube_key))
-  outputs:
-    - name: sonarqube-analysis-input
-  run:
-    path: /bin/sh
-    args: ["sample-gradle/ci/build.sh"]
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: java
+    tag: 'openjdk-8'
+inputs:
+  - name: sample-gradle
+params:
+  sonar_token: ((limeo_sonarqube_key))
+outputs:
+  - name: sonarqube-analysis-input
+run:
+  path: /bin/sh
+  args: ["sample-gradle/ci/build.sh"]
