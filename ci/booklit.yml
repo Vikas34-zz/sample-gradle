@@ -1,5 +1,3 @@
-variables:
-    sonar_token: ((sonarqube_token))
 
 resource_types:
 
@@ -46,12 +44,19 @@ jobs:
           tag: 'openjdk-8'
       inputs:
       - name: sample-gradle
+      params:
+        sonar_token: ((sonarqube_token))
       outputs:
       - name: sonarqube-analysis-input
       run:
         path: /bin/sh
-        va
         args: ["sample-gradle/ci/build.sh"]
+#        - -exc
+#        - |
+#          env
+#          go version
+        #path: /bin/sh
+        #args: ["sample-gradle/ci/build.sh"]
 #  - put: code-analysis
 #    params:
 #      project_path: sonarqube-analysis-input
