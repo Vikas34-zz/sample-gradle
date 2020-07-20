@@ -1,6 +1,5 @@
 variable:
-  - name: sonar_token
-    value: ((sonarqube_token))
+    sonar_token: ((sonarqube_token))
 
 resource_types:
 
@@ -51,6 +50,7 @@ jobs:
       - name: sonarqube-analysis-input
       run:
         path: /bin/sh
+        va
         args: ["sample-gradle/ci/build.sh"]
 #  - put: code-analysis
 #    params:
