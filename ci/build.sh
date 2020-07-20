@@ -2,8 +2,9 @@
 
 set -ex
 cd sample-gradle
-./gradlew build test
+#./gradlew build test
 
+echo $sonar_token
 #./gradlew sonarqube \
 #  -Dsonar.projectKey=test \
 #  -Dsonar.host.url=https://devstack.vwgroup.com/sonar \

@@ -1,3 +1,7 @@
+variable:
+  - name: sonar_token
+    value: ((sonarqube_token))
+
 resource_types:
 
 - name: sonar-runner
@@ -13,12 +17,12 @@ resources:
   source:
     uri: https://github.com/Vikas34/sample-gradle.git
 
-- name: code-analysis
-  type: sonar-runner
-  source:
-    host_url: https://devstack.vwgroup.com/sonar
-    login: 62cebc63d4b0ccab22da7459c32d49452e593ed7
-    project_key: test
+#- name: code-analysis
+#  type: sonar-runner
+#  source:
+#    host_url: https://devstack.vwgroup.com/sonar
+#    login: 62cebc63d4b0ccab22da7459c32d49452e593ed7
+#    project_key: test
 
 
 jobs:
@@ -48,31 +52,31 @@ jobs:
       run:
         path: /bin/sh
         args: ["sample-gradle/ci/build.sh"]
-  - put: code-analysis
-    params:
-      project_path: sonarqube-analysis-input
-      project_key: test
-      sources: ["."]
-      additional_properties:
-        sonar.projectKey: test
+#  - put: code-analysis
+#    params:
+#      project_path: sonarqube-analysis-input
+#      project_key: test
+#      sources: sonarqube-analysis-input
+#      additional_properties:
+#        sonar.projectKey: test
 
-- name: qualitygate
-  plan:
-    - get: code-analysis
-      passed:
-      - build-and-analyze
-      trigger: true
-    - task: check-sonarqube-quality-gate
-      config:
-        platform: linux
-        image_resource:
-          type: docker-image
-          source:
-            repository: cathive/concourse-sonarqube-qualitygate-task
-            tag: latest # Use one of the versioned tags for reproducible builds!
-        inputs:
-        - name: code-analysis
-        run:
-          path: /sonarqube-qualitygate-check
-          dir: code-analysis
+#- name: qualitygate
+#  plan:
+#    - get: code-analysis
+#      passed:
+#      - build-and-analyze
+#      trigger: true
+#    - task: check-sonarqube-quality-gate
+#      config:
+#        platform: linux
+#        image_resource:
+#          type: docker-image
+#          source:
+#            repository: cathive/concourse-sonarqube-qualitygate-task
+#            tag: latest # Use one of the versioned tags for reproducible builds!
+#        inputs:
+#        - name: code-analysis
+#        run:
+#          path: /sonarqube-qualitygate-check
+#          dir: code-analysis
 
