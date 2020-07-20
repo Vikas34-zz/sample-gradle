@@ -14,12 +14,12 @@ resources:
   source:
     uri: https://github.com/Vikas34/sample-gradle.git
 
-#- name: code-analysis
-#  type: sonar-runner
-#  source:
-#    host_url: https://devstack.vwgroup.com/sonar
-#    login: 62cebc63d4b0ccab22da7459c32d49452e593ed7
-#    project_key: test
+- name: code-analysis
+  type: sonar-runner
+  source:
+    host_url: https://devstack.vwgroup.com/sonar
+    login: 62cebc63d4b0ccab22da7459c32d49452e593ed7
+    project_key: test
 
 
 jobs:
