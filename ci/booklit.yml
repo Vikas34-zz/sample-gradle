@@ -13,6 +13,8 @@ resources:
   type: git
   source:
     uri: https://github.com/Vikas34/sample-gradle.git
+    params:
+      sonar_token: ((sonarqube_token))
 
 #- name: code-analysis
 #  type: sonar-runner
@@ -44,8 +46,6 @@ jobs:
           tag: 'openjdk-8'
       inputs:
       - name: sample-gradle
-      params:
-        sonar_token: ((sonarqube_token))
       outputs:
       - name: sonarqube-analysis-input
       run:
