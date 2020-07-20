@@ -36,8 +36,8 @@ jobs:
     trigger: true
   - task: build
     file: sample-gradle/ci/build.yml
-#    params:
-#      sonar_token: ((limeo_sonarqube_key))
+    params:
+      sonar_token: ((limeo_sonarqube_key))
 
 #        - -exc
 #        - |

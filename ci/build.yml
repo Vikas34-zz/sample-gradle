@@ -8,8 +8,8 @@ image_resource:
     tag: 'openjdk-8'
 inputs:
   - name: sample-gradle
-params:
-  sonar_token: ((limeo_sonarqube_key))
+#params:
+#  sonar_token: ((limeo_sonarqube_key))
 outputs:
   - name: sonarqube-analysis-input
 run:
