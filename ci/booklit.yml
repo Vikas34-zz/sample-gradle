@@ -1,4 +1,4 @@
-variable:
+variables:
     sonar_token: ((sonarqube_token))
 
 resource_types:
