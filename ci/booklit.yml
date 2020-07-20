@@ -13,8 +13,6 @@ resources:
   type: git
   source:
     uri: https://github.com/Vikas34/sample-gradle.git
-    params:
-      sonar_token: ((sonarqube_token))
 
 #- name: code-analysis
 #  type: sonar-runner
@@ -37,33 +35,23 @@ jobs:
   - get: sample-gradle
     trigger: true
   - task: build
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source:
-          repository: java
-          tag: 'openjdk-8'
-      inputs:
-      - name: sample-gradle
-      outputs:
-      - name: sonarqube-analysis-input
-      run:
-        path: /bin/sh
-        args: ["sample-gradle/ci/build.sh"]
+    file: sample-gradle/ci/build.yml
+    params:
+      sonar_token: ((limeo_sonarqube_key))
+
 #        - -exc
 #        - |
 #          env
 #          go version
         #path: /bin/sh
         #args: ["sample-gradle/ci/build.sh"]
-#  - put: code-analysis
-#    params:
-#      project_path: sonarqube-analysis-input
-#      project_key: test
-#      sources: sonarqube-analysis-input
-#      additional_properties:
-#        sonar.projectKey: test
+  - put: code-analysis
+    params:
+      project_path: sonarqube-analysis-input
+      project_key: test
+      sources: sonarqube-analysis-input
+      additional_properties:
+        sonar.projectKey: test
 
 #- name: qualitygate
 #  plan:
